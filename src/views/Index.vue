@@ -50,14 +50,14 @@ export default {
   },
 
   beforeCreate() {
-    this.$api({
-      method: 'post',
-      url: '/index'
-    }).then((response) => {
-      this.datas = response.data;
-    }).catch(function(error) {
-      alert(error)
-    })
+    // this.$api({
+    //   method: 'post',
+    //   url: '/index'
+    // }).then((response) => {
+    //   this.datas = response.data;
+    // }).catch(function(error) {
+    //   alert(error)
+    // })
   }
 }
 </script>

@@ -3,9 +3,10 @@
   <div class="car">
       <header class="header">
           <div class="header-icon">
-              <span class="icon2-user"></span>
+              <img class="icon2-user" :src="userInfo.headimgurl">
           </div>
-          <span>登录/注册</span>
+
+        <span >{{userInfo.nikcname}}</span>
       </header>
       <div class="main">
           <router-link class="my-indent" :to="{ name: ''}">
@@ -105,21 +106,24 @@
     },
     data () {
       return {
-        userInfo: {}
+        userInfo: {
+          nikcname: "test",
+          city: "test",
+          headimgurl:""
+        }
       }
     },
     beforeCreate() {
       console.log(this.$route.query)
       console.log("================")
-      this.userInfo = {"openId":"23423rsdf"}
-
+      let code = this.$route.query.code
       this.$api({
-        method: 'post',
-        url: '/index'
+        method: 'get',
+        url: '/api/user?code='+code
       }).then((response) => {
-        this.datas = response.data;
+        this.userInfo = response.data;
       }).catch(function(error) {
-        alert(error)
+        console.log(error)
       })
     }
   }

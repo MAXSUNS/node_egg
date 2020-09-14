@@ -18,7 +18,7 @@ export default new Router({
   routes: [{
       path: '/',
       name: '首页',
-      component: Index
+      component: User
     }, {
       path: '/category',
       name: '分类页',
