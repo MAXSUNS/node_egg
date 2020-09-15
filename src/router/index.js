@@ -15,6 +15,7 @@ const Login = resolve => require(['@/views/login.vue'], resolve)
 
 
 export default new Router({
+  mode: 'history',
   routes: [{
       path: '/',
       name: '首页',
