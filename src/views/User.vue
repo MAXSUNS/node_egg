@@ -20,7 +20,7 @@
           <section class="my-pay">
               <router-link :to="{ name: ''}">
                   <span class="icon2-money"></span>
-                  <p>代付款</p>
+                  <p>待付款</p>
               </router-link>
               <router-link :to="{ name: ''}">
                   <span class="icon2-thecar"></span>
@@ -28,7 +28,7 @@
               </router-link>
               <router-link :to="{ name: ''}">
                   <span class="icon2-fixed"></span>
-                  <p>退换修</p>
+                  <p>售后</p>
               </router-link>
 
           </section>
@@ -68,14 +68,14 @@
           </section>
 
           <section class="my-settle">
-              <router-link :to="{ name: ''}" class="my-settle-top">
+              <router-link to="/exchange" class="my-settle-top">
                   <div>
                     <span class="icon2-f"></span>
 
                   </div>
 
                   <p>
-                    <span>F码通道</span><i class="icon-go"></i>
+                    <span>兑换通道</span><i class="icon-go"></i>
                   </p>
               </router-link>
               <router-link :to="{ name: ''}" class="my-settle-bottom">
@@ -106,7 +106,7 @@
     },
     data () {
       return {
-        userInfo: {
+         userInfo: {
           nikcname: "test",
           city: "test",
           headimgurl:""
@@ -115,12 +115,15 @@
     },
     beforeCreate() {
       console.log(this.$route.query)
+      this.$store.commit('SET_USER', this.$route.query);
+      console.log("------------"+JSON.stringify(this.$store.state))
       console.log("================")
       let code = this.$route.query.code
       this.$api({
         method: 'get',
         url: '/api/user?code='+code
       }).then((response) => {
+        this.$store.commit('SET_USER', response.data);
         this.userInfo = response.data;
       }).catch(function(error) {
         console.log(error)

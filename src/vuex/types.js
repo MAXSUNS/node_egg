@@ -3,6 +3,7 @@
 //Detail父组件中 当前页面商品的数据
 
 export const SET_DATAS = 'SET_DATAS'
+export const SET_USER = 'SET_USER'
 
 //chose组件选择的颜色
 export const CHANGE_COL_SELECTED = 'CHANGE_COL_SELECTED'

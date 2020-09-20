@@ -8,6 +8,7 @@ const Category = resolve => require(['@/views/Category.vue'], resolve)
 const CategoryMain = resolve => require(['@/components/category/main.vue'], resolve)
 const Car = resolve => require(['@/views/Car.vue'],resolve)
 const User = resolve => require(['@/views/User.vue'], resolve)
+const Exchange = resolve => require(['@/views/Exchange.vue'], resolve)
 const Detail = resolve => require(['@/views/Detail.vue'], resolve)
 const Search = resolve => require(['@/views/Search.vue'], resolve)
 const Pay = resolve => require(['@/components/car/pay/pay.vue'], resolve)
@@ -43,9 +44,18 @@ export default new Router({
       name: '用户页',
       component: User,
       meta: {
-           requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录才能进入的
-       },
-    }, {
+        requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录才能进入的
+      },
+    },
+    {
+      path: '/exchange',
+      name: '兑换页',
+      component: Exchange,
+      meta: {
+        requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录才能进入的
+      },
+    },
+    {
       path: '/detail',
       name: '详情页',
       component: Detail
