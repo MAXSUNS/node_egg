@@ -21,7 +21,7 @@
     <mt-button
      plain
      size="large"
-     @click="login"
+     @click="exchange"
      >兑换</mt-button>
 
   </div>
@@ -42,14 +42,17 @@ export default {
   },
   methods:{
     // 登录按钮
-    login(){
+    exchange(){
       if(this.account!=="" && this.password!=="") {
+        console.log("------------"+JSON.stringify(this.$store.state.detail))
+        let userId=this.$store.state.detail.userInfo.id
+        console.log("------------"+userId)
 
         this.$api({
           method: 'get',
-          url: '/api/user?code='+code
+          url: '/api/order/exchange?code='+this.account+'&password='+this.password+'&userId='+userId
         }).then((response) => {
-          Toast('兑换成功，请在-我的订单-中完善收货信息。');
+          Toast(response);
           setTimeout(()=>{
             this.$router.replace({
               path: 'user'

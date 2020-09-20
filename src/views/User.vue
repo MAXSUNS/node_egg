@@ -6,9 +6,10 @@
               <img class="icon2-user" :src="userInfo.headimgurl">
           </div>
 
-        <span >{{userInfo.nikcname}}</span>
+        <span  >         {{userInfo.nikcname}}</span>
+        <span  >         {{userInfo.id}}</span>
       </header>
-      <div class="main">
+    <div class="main">
           <router-link class="my-indent" :to="{ name: ''}">
               <span class="my-indent-left">我的订单</span>
               <div class="my-indent-right">
@@ -109,25 +110,32 @@
          userInfo: {
           nikcname: "test",
           city: "test",
-          headimgurl:""
+          headimgurl:"",
+          id:1
         }
       }
     },
     beforeCreate() {
       console.log(this.$route.query)
-      this.$store.commit('SET_USER', this.$route.query);
+      this.$store.commit('SET_USER', {
+        nikcname: "test",
+        city: "test",
+        headimgurl:"",
+        id:1
+      });
+
+      // this.$store.commit('SET_USER', this.$route.query);
       console.log("------------"+JSON.stringify(this.$store.state))
-      console.log("================")
       let code = this.$route.query.code
-      this.$api({
-        method: 'get',
-        url: '/api/user?code='+code
-      }).then((response) => {
-        this.$store.commit('SET_USER', response.data);
-        this.userInfo = response.data;
-      }).catch(function(error) {
-        console.log(error)
-      })
+      // this.$api({
+      //   method: 'get',
+      //   url: '/api/user?code='+code
+      // }).then((response) => {
+      //   this.$store.commit('SET_USER', response.data);
+      //   this.userInfo = response.data;
+      // }).catch(function(error) {
+      //   console.log(error)
+      // })
     }
   }
 </script>
@@ -173,7 +181,7 @@
         }
       }
       >span {
-        margin-left: 3.2vw;
+        margin-left: 20vw;
         .fz(font-size, 30);
         color: #ffffff;
         letter-spacing: .2vw;
