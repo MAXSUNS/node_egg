@@ -117,25 +117,18 @@
     },
     beforeCreate() {
       console.log(this.$route.query)
-      this.$store.commit('SET_USER', {
-        nikcname: "test",
-        city: "test",
-        headimgurl:"",
-        id:1
-      });
-
-      // this.$store.commit('SET_USER', this.$route.query);
       console.log("------------"+JSON.stringify(this.$store.state))
+      if ()
       let code = this.$route.query.code
-      // this.$api({
-      //   method: 'get',
-      //   url: '/api/user?code='+code
-      // }).then((response) => {
-      //   this.$store.commit('SET_USER', response.data);
-      //   this.userInfo = response.data;
-      // }).catch(function(error) {
-      //   console.log(error)
-      // })
+      this.$api({
+        method: 'get',
+        url: '/api/user?code='+code
+      }).then((response) => {
+        this.$store.commit('SET_USER', response.data);
+        this.userInfo = response.data;
+      }).catch(function(error) {
+        console.log(error)
+      })
     }
   }
 </script>
