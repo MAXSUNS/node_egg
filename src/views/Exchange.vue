@@ -44,20 +44,17 @@ export default {
     // 登录按钮
     exchange(){
       if(this.account!=="" && this.password!=="") {
-        console.log("------------"+JSON.stringify(this.$store.state.detail))
         let userId=this.$store.state.detail.userInfo.id
-        console.log("------------"+userId)
-
         this.$api({
           method: 'get',
           url: '/api/order/exchange?code='+this.account+'&password='+this.password+'&userId='+userId
         }).then((response) => {
-          Toast(response);
+          Toast(response.data);
           setTimeout(()=>{
             this.$router.replace({
-              path: 'user'
+              path: '/'
             })
-          },1000);
+          },2000);
         }).catch(function(error) {
           Toast('兑换失败，请检查网络后重新尝试！');
         })

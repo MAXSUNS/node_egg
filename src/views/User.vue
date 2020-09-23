@@ -3,11 +3,9 @@
   <div class="car">
       <header class="header">
           <div class="header-icon">
-              <img class="icon2-user" :src="userInfo.headimgurl">
+              <img height="60" width="60" :src="userInfo.headimgurl">
           </div>
-
-        <span  >         {{userInfo.nikcname}}</span>
-        <span  >         {{userInfo.id}}</span>
+        <span  >         {{userInfo.nickname}}</span>
       </header>
     <div class="main">
           <router-link class="my-indent" :to="{ name: ''}">
@@ -107,28 +105,27 @@
     },
     data () {
       return {
-         userInfo: {
-          nikcname: "test",
-          city: "test",
-          headimgurl:"",
-          id:1
-        }
+         userInfo: {}
       }
     },
-    beforeCreate() {
-      console.log(this.$route.query)
-      console.log("------------"+JSON.stringify(this.$store.state))
-      if ()
-      let code = this.$route.query.code
-      this.$api({
-        method: 'get',
-        url: '/api/user?code='+code
-      }).then((response) => {
-        this.$store.commit('SET_USER', response.data);
-        this.userInfo = response.data;
-      }).catch(function(error) {
-        console.log(error)
-      })
+    mounted() {
+
+      // console.log(this.$route.query)
+      // console.log("------------"+JSON.stringify(this.$store.state))
+      if (this.$store.state.detail.userInfo.hasOwnProperty('id')){
+        this.userInfo = this.$store.state.detail.userInfo
+      }else {
+        let code = this.$route.query.code
+        this.$api({
+          method: 'get',
+          url: '/api/user?code='+code
+        }).then((response) => {
+          this.$store.commit('SET_USER', response.data);
+          this.userInfo = response.data;
+        }).catch(function(error) {
+          console.log(error)
+        })
+      }
     }
   }
 </script>
@@ -158,14 +155,10 @@
       .header-icon {
         border: .4vw solid #ffffff;
         background-color: @cl;
-        margin-left: 4vw;
+        margin-left: 1vw;
         -webkit-box-sizing: border-box;
               box-sizing: border-box;
-        width: 14vw;
-        height: 14vw;
-        line-height: 16vw;
         text-align: center;
-        border-radius: 50%;
         span {
           .fz(font-size, 54);
           &::before {
@@ -174,7 +167,7 @@
         }
       }
       >span {
-        margin-left: 20vw;
+        margin-left: 5vw;
         .fz(font-size, 30);
         color: #ffffff;
         letter-spacing: .2vw;
