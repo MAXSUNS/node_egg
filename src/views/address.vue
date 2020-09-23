@@ -42,21 +42,25 @@ export default {
   },
   data(){
     return {
-      account:'',
-      password:''
+      mobile:'',
+      consignee:'',
+      address:''
     }
   },
   methods:{
     // 登录按钮
     exchange(){
-      if(this.account!=="" && this.password!=="") {
-        console.log("------------"+JSON.stringify(this.$store.state.detail))
-        let userId=this.$store.state.detail.userInfo.id
-        console.log("------------"+userId)
-
+      if(this.mobile!=="" && this.consignee!==""&& this.address!=="") {
+        let order=this.$store.state.detail.orderInfo
         this.$api({
-          method: 'get',
-          url: '/api/order/exchange?code='+this.account+'&password='+this.password+'&userId='+userId
+          method: 'post',
+          body: {
+            "mobile":this.mobile,
+            "consignee":this.consignee,
+            "address":this.address,
+            "orderId":order.id,
+          },
+          url: '/api/order/address'
         }).then((response) => {
           Toast(response.data);
           setTimeout(()=>{
@@ -65,10 +69,10 @@ export default {
             })
           },2000);
         }).catch(function(error) {
-          Toast('兑换失败，请检查网络后重新尝试！');
+          Toast('更改地址失败，请检查网络后重新尝试！');
         })
       }else {
-        Toast('兑换账号密码不能为空');
+        Toast('收货信息不能为空');
       }
 
     },

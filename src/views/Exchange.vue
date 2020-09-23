@@ -45,6 +45,7 @@ export default {
     exchange(){
       if(this.account!=="" && this.password!=="") {
         let userId=this.$store.state.detail.userInfo.id
+
         this.$api({
           method: 'get',
           url: '/api/order/exchange?code='+this.account+'&password='+this.password+'&userId='+userId

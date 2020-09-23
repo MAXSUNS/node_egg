@@ -4,6 +4,7 @@
 
 export const SET_DATAS = 'SET_DATAS'
 export const SET_USER = 'SET_USER'
+export const SET_ORDER = 'SET_ORDER'
 
 //chose组件选择的颜色
 export const CHANGE_COL_SELECTED = 'CHANGE_COL_SELECTED'
