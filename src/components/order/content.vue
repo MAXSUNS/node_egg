@@ -1,7 +1,7 @@
 <template lang="html">
   <section class="content">
-    <div class="img-wrap" v-for="k in datas">
-      <p>{{k.id}}</p>
+    <div class="img-wrap" v-for="k in content">
+      <img :src="k.imgSrc">
     </div>
   </section>
 
@@ -9,15 +9,10 @@
 
 <script>
 export default {
-  props: {
-    datas:{
-      type:Array,
-      default:function(){
-        return []
-      }
-    }
-  },
   computed:{
+    content(){
+      return this.$store.state.detail.productDatas.contentImgSrc
+    }
   }
 }
 </script>

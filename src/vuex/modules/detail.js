@@ -13,7 +13,7 @@ const state = {
   selectedList:'',         //已选择的购物车商品列表
   unSelectedList:'',      //未选择的购物车商品列表,提交订单后用它替换carList
   userInfo:'',      //用户信息
-  orderInfo:'',      //用户信息
+  orderInfo:'',      //订单信息
 }
 
 //更改 store 中的状态的唯一方法:提交 mutation
