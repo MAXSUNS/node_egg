@@ -10,7 +10,7 @@
             <p>{{k.id}}</p>
             <p style="color:rgb(199, 108, 28)"> {{k.mobile}} - {{k.address}}</p>
             <p>售价：{{k.mobile}}元</p>
-            <div class="something-right-bottom" @click="orderDetail(k.id)">
+            <div class="something-right-bottom" @click="orderDetail(k)">
               <span>详情</span>
             </div>
           </div>
@@ -42,16 +42,15 @@ export default {
   },
 
   methods: {
-    orderDetail (i) {
+    orderDetail (data) {
       // 点击垃圾桶，删除当前商品，这里用splice和filter都会bug,只能重置数组
-
+      this.$store.commit('SET_SELECT_ORDER', data);
       this.$router.replace({
         path: '/orderdetail'
       })
     },
     toggle () {
       // 每点击一下都会改变choseBool的布尔值,所以要重置数组
-
       this.$nextTick(() => {
         this.$store.dispatch('cutCarList', this.carList)
       })

@@ -51,7 +51,7 @@ export default {
     // 登录按钮
     exchange(){
       if(this.mobile!=="" && this.consignee!==""&& this.address!=="") {
-        let order=this.$store.state.detail.orderInfo
+        let order=this.$store.state.detail.selectOrder
         this.$api({
           method: 'post',
           body: {

@@ -49,9 +49,8 @@ export default {
 
     // console.log(this.$route.query)
     // console.log("------------"+JSON.stringify(this.$store.state))
-    console.log("111111----"+JSON.stringify(this.$store.state.detail))
-    this.orders=this.$store.state.detail.orderInfo[0].orders
-    console.log("111111----"+JSON.stringify(this.order))
+    console.log("111111----"+JSON.stringify(this.$store.state.detail.selectOrder))
+    this.orders=this.$store.state.detail.selectOrder
 
   }
 
