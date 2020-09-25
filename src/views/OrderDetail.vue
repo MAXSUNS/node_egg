@@ -10,9 +10,9 @@
       <ul class="something" v-if='this.orders'>
         <li v-for="k in this.orders">
           <div class="something-right">
-            <p>{{k.id}}</p>
-            <p style="color:rgb(199, 108, 28)"> {{k.mobile}} - {{k.address}}</p>
-            <p>售价：{{k.mobile}}元</p>
+            <p>{{k.goods_name}} 第{{k.number}}份</p>
+            <p >订单状态：</p>
+            <p >{{k.specifications}}</p>
           </div>
         </li>
 
@@ -42,7 +42,7 @@ export default {
   data () {
     return {
       userId: "",
-      orders:[]
+      orders:{}
     }
   },
   mounted() {
@@ -50,7 +50,7 @@ export default {
     // console.log(this.$route.query)
     // console.log("------------"+JSON.stringify(this.$store.state))
     console.log("111111----"+JSON.stringify(this.$store.state.detail.selectOrder))
-    this.orders=this.$store.state.detail.selectOrder
+    this.orders=this.$store.state.detail.selectOrder.orders
 
   }
 
@@ -74,7 +74,7 @@ export default {
       align-items: center;
       padding: 4vw 2vw;
       position: relative;
-      height: 26vw;
+      height: 15vw;
       .something-right {
         -ms-flex: 7;
         -webkit-box-flex: 7;

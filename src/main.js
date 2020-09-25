@@ -1,12 +1,11 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
 import App from './App'
 import router from './router'
-import store from '@/vuex/store.js'   //vuex
-import api from '@/http/api.js'       //http请求
-import less from 'less'
-import Mint from 'mint-ui';    //移动端UI
+import store from '@/vuex/store.js' //vuex
+import api from '@/http/api.js' //http请求
+import Mint from 'mint-ui'; //移动端UI
 import 'mint-ui/lib/style.css'
+
 Vue.use(Mint);
 Vue.config.productionTip = false
 Vue.prototype.$api = api;

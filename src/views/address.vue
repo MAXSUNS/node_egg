@@ -54,7 +54,7 @@ export default {
         let order=this.$store.state.detail.selectOrder
         this.$api({
           method: 'post',
-          body: {
+          data: {
             "mobile":this.mobile,
             "consignee":this.consignee,
             "address":this.address,

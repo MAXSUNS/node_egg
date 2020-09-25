@@ -53,7 +53,7 @@ export default {
           Toast(response.data);
           setTimeout(()=>{
             this.$router.replace({
-              path: '/'
+              path: '/order'
             })
           },2000);
         }).catch(function(error) {
