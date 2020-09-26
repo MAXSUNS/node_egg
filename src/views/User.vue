@@ -8,7 +8,7 @@
         <span  >         {{userInfo.nickname}}</span>
       </header>
     <div class="main">
-          <router-link class="my-indent" :to="{ name: ''}">
+          <router-link class="my-indent" to="/order">
               <span class="my-indent-left">我的订单</span>
               <div class="my-indent-right">
                   <span>全部订单</span>
@@ -17,54 +17,54 @@
           </router-link>
 
           <section class="my-pay">
-              <router-link :to="{ name: ''}">
+              <router-link :to="{ name: '订单页'}">
                   <span class="icon2-money"></span>
                   <p>待付款</p>
               </router-link>
-              <router-link :to="{ name: ''}">
+              <router-link :to="{ name: '订单页'}">
                   <span class="icon2-thecar"></span>
                   <p>待收货</p>
               </router-link>
-              <router-link :to="{ name: ''}">
+              <router-link :to="{ name: '订单页'}">
                   <span class="icon2-fixed"></span>
                   <p>售后</p>
               </router-link>
 
           </section>
 
-          <section class="my-vip">
-            <router-link class="my-vip-top ho" :to="{ name: ''}" >
-              <div class="my-vip-top-div">
-                <span class="icon2-vip">
-                    <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span>
-                </span>
-              </div>
-              <p>
-                <span>会员福利</span><i class="icon-go"></i>
-              </p>
-            </router-link>
-            <router-link class="my-vip-bottom ho" :to="{ name: ''}">
-              <div>
-                <span class="icon2-money"></span>
-              </div>
-              <p>
-                <span>我的优惠</span><i class="icon-go"></i>
-              </p>
-            </router-link>
-          </section>
+<!--          <section class="my-vip">-->
+<!--            <router-link class="my-vip-top ho" :to="{ name: ''}" >-->
+<!--              <div class="my-vip-top-div">-->
+<!--                <span class="icon2-vip">-->
+<!--                    <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span>-->
+<!--                </span>-->
+<!--              </div>-->
+<!--              <p>-->
+<!--                <span>会员福利</span><i class="icon-go"></i>-->
+<!--              </p>-->
+<!--            </router-link>-->
+<!--            <router-link class="my-vip-bottom ho" :to="{ name: ''}">-->
+<!--              <div>-->
+<!--                <span class="icon2-money"></span>-->
+<!--              </div>-->
+<!--              <p>-->
+<!--                <span>我的优惠</span><i class="icon-go"></i>-->
+<!--              </p>-->
+<!--            </router-link>-->
+<!--          </section>-->
 
-          <section class="my-service">
-              <router-link class="my-service-top" :to="{ name: ''}">
-                  <div>
-                    <span class="icon2-service">
-                        <span class="path1"></span><span class="path2"></span><span class="path3"></span>
-                    </span>
-                  </div>
-                  <p>
-                    <span>服务中心</span><i class="icon-go"></i>
-                  </p>
-              </router-link>
-          </section>
+<!--          <section class="my-service">-->
+<!--              <router-link class="my-service-top" :to="{ name: ''}">-->
+<!--                  <div>-->
+<!--                    <span class="icon2-service">-->
+<!--                        <span class="path1"></span><span class="path2"></span><span class="path3"></span>-->
+<!--                    </span>-->
+<!--                  </div>-->
+<!--                  <p>-->
+<!--                    <span>服务中心</span><i class="icon-go"></i>-->
+<!--                  </p>-->
+<!--              </router-link>-->
+<!--          </section>-->
 
           <section class="my-settle">
               <router-link to="/exchange" class="my-settle-top">
@@ -112,19 +112,28 @@
 
       // console.log(this.$route.query)
       // console.log("------------"+JSON.stringify(this.$store.state))
+      const uInfo={"openid":"oFvgIwt6lExTY72Lj8Zz0oa59Ta4","nickname":"孙岱Max","sex":1,"language":"zh_CN","city":"浦东新区","province":"上海","country":"中国","headimgurl":"https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLibmC4vmibqINOB4gQdz05NaZ0bN3SLRCicOpVbGu7bvSCdkHd9RbUEDlBfJfbPqgATIt3RXQdCLL3A/132","privilege":[],"id":2}
+      this.$store.commit('SET_USER', uInfo);
+
       if (this.$store.state.detail.userInfo.hasOwnProperty('id')){
         this.userInfo = this.$store.state.detail.userInfo
       }else {
         let code = this.$route.query.code
-        this.$api({
-          method: 'get',
-          url: '/api/user?code='+code
-        }).then((response) => {
-          this.$store.commit('SET_USER', response.data);
-          this.userInfo = response.data;
-        }).catch(function(error) {
-          console.log(error)
-        })
+        if (code){
+          this.$api({
+            method: 'get',
+            url: '/api/user?code='+code
+          }).then((response) => {
+            this.$store.commit('SET_USER', response.data);
+            this.userInfo = response.data;
+          }).catch(function(error) {
+            console.log(error)
+          })
+        }else {
+          this.$router.replace({
+            path: '/login'
+          })
+        }
       }
     }
   }

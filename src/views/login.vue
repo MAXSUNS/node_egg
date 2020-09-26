@@ -57,15 +57,23 @@ export default {
         Toast('登录成功,存储token,跳转网页');
         this.toggle = false;
         this.$store.commit('CHANGE_TOKEN',1);
+        this.$api({
+          method: 'get',
+          url: '/api/user/login?code='+this.account+'&password='+this.password
+        }).then((response) => {
+          this.$store.commit('SET_USER', response.data);
+          Toast('登陆成功！');
+          setTimeout(()=>{
+            this.$router.replace({
+              path: '/'
+            })
+          },2000);
+        }).catch(function(error) {
+          Toast('兑换失败，请检查网络后重新尝试！');
+        })
       }else {
         Toast('账号密码不能为空');
       }
-
-      setTimeout(()=>{
-        this.$router.replace({
-          path: 'user'
-        })
-      },1000);
       // 登录成
     },
 
