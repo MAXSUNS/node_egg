@@ -4,10 +4,10 @@
     <ul class="something" v-if='datas'>
       <li v-for="(k,i) in datas">
           <div class="something-middle">
-            <img src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLibmC4vmibqINOB4gQdz05NaZ0bN3SLRCicOpVbGu7bvSCdkHd9RbUEDlBfJfbPqgATIt3RXQdCLL3A/132">
+            <img src={{k.pic_url}}>
           </div>
           <div class="something-right">
-            <p>{{k.message}}</p>
+            <p>{{k.goods_name}}</p>
             <p style="color:rgb(199, 108, 28)"> {{k.mobile}} - {{k.address}}</p>
             <p>售价：{{k.goods_price}}元</p>
             <div class="something-right-bottom" @click="orderDetail(k)">
