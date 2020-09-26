@@ -32,7 +32,7 @@ export default {
 
   computed:{
     count(){
-      return this.$store.state.detail.orderInfo
+      return this.$store.state.detail.orderInfo.length
     }
   },
   data () {

@@ -7,7 +7,7 @@
     </div>
     <router-link class="nothing-toshop" :to="{name:'分类页'}">
       <p>订单是空的</p>
-      <router-link :to="{ name: '用户页', params: {} }">去兑换</router-link>
+      <router-link :to="{ name: '兑换页', params: {} }">去兑换</router-link>
     </router-link>
   </div>
 

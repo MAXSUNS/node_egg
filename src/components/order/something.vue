@@ -4,7 +4,7 @@
     <ul class="something" v-if='datas'>
       <li v-for="(k,i) in datas">
           <div class="something-middle">
-            <img src={{k.pic_url}}>
+            <img :src="k.pic_url">
           </div>
           <div class="something-right">
             <p>{{k.goods_name}}</p>
