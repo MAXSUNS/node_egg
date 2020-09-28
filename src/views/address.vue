@@ -35,6 +35,8 @@
 
 <script>
 import Header from '@/common/_header.vue'
+import isValidPhone from '@/util/check'
+
 import { Toast } from 'mint-ui'
 export default {
   components:{
@@ -50,7 +52,7 @@ export default {
   methods:{
     // 登录按钮
     exchange(){
-      if(this.mobile!=="" && this.consignee!==""&& this.address!=="") {
+      if(this.mobile !=="" && this.consignee !==""&&this.address !==""&&isValidPhone(this.mobile)) {
         let order=this.$store.state.detail.selectOrder
         this.$api({
           method: 'post',
