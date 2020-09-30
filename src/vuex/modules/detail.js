@@ -12,6 +12,9 @@ const state = {
   fetchLoading:false,     //全局加载状态的Loading
   selectedList:'',         //已选择的购物车商品列表
   unSelectedList:'',      //未选择的购物车商品列表,提交订单后用它替换carList
+  userInfo:'',      //用户信息
+  orderInfo:'',      //订单信息
+  selectOrder:'',      //订单信息
 }
 
 //更改 store 中的状态的唯一方法:提交 mutation
@@ -29,6 +32,16 @@ const mutations = {
 //异步请求的数据
   [types.SET_DATAS](state,res) {
     state.productDatas = res
+  },
+
+  [types.SET_USER](state,res) {
+    state.userInfo = res
+  },
+  [types.SET_ORDER](state,res) {
+    state.orderInfo = res
+  },
+  [types.SET_SELECT_ORDER](state,res) {
+    state.selectOrder = res
   },
 
   //详情页商品颜色的选择
@@ -87,11 +100,20 @@ const actions = {
 // 父组件发送异步请求
   setDatas({commit}) {
     vm.$api({
-        method:'post',
-        url:"/detail"
-      }).then(response=>{
-        commit('SET_DATAS',response.data);
-      })
+      method:'post',
+      url:"/detail"
+    }).then(response=>{
+      commit('SET_DATAS',response.data);
+    })
+  },
+  setUser({userInfo}) {
+    Util.setLocal(userInfo,'userInfo');
+  },
+  setOrder({orderInfo}) {
+    Util.setLocal(orderInfo,'orderInfo');
+  },
+  setSelectOrder({selectOrder}) {
+    Util.setLocal(selectOrder,'selectOrder');
   },
 
 // 购物车数量增减,true是加,false是减
