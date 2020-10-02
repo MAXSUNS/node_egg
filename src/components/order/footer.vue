@@ -37,7 +37,6 @@ export default {
   },
   mounted() {
     this.orderInfo=this.$store.state.detail.selectOrder
-
   }
 }
 </script>

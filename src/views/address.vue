@@ -8,18 +8,21 @@
           label="收件人"
           placeholder="请输入收件人姓名"
           type = "text"
+          value={{orderInfo.consignee}}
           v-model = "consignee"
       ></mt-field>
       <mt-field
           label="地址"
           placeholder="请输入完整"
           type = "text"
+          value={{orderInfo.address}}
           v-model = "address"
       ></mt-field>
       <mt-field
        label="收货电话"
        placeholder="请输入收货"
        type="text"
+       value={{orderInfo.mobile}}
        v-model="mobile"
         ></mt-field>
       <p class="tip">Tip : 请输入正确的收货信息，将根据收货地址进行发货</p>
@@ -46,7 +49,8 @@ export default {
     return {
       mobile:'',
       consignee:'',
-      address:''
+      address:'',
+      orderInfo:{}
     }
   },
   methods:{
@@ -79,6 +83,9 @@ export default {
 
     },
 
+  },
+  mounted() {
+    this.orderInfo=this.$store.state.detail.selectOrder
   }
 }
 </script>
