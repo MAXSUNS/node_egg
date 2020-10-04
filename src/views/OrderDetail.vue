@@ -15,7 +15,11 @@
             <p >{{k.specifications}}</p>
           </div>
         </li>
-
+        <li >
+          <div class="something-right">
+            <p>我也是有底线的!!!</p>
+          </div>
+        </li>
       </ul>
       <v-footer/>
 
