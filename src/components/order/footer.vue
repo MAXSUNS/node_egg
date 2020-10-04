@@ -8,7 +8,7 @@
         <p>手机号：{{orderInfo.mobile}}</p>
       </div>
       <a class="footer-pay" @click="address">
-        修改地址
+        编辑地址
       </a>
     </footer>
 
