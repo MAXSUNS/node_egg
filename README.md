@@ -27,6 +27,7 @@ vuex + webStorage 实现了购物车功能,axios拦截,配合路由钩子函数�
 
 2. 积分功能
 
+3. 订单暂停配送功能
 
 ## Build Setup
 
