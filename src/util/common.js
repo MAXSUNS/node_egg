@@ -6,7 +6,6 @@ export default {
     // console.log('get local operation')
     return JSON.parse(window.localStorage.getItem(key))
   },
-  // 设置用
   setLocal (res, key = STORAGE_USER_KEY, isSaveOldData = false) {
     //第三个参数是true的话,会增加数据而不是重新设置,res必须是数组
     if (isSaveOldData) {
