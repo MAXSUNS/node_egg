@@ -5,18 +5,18 @@
     </v-header>
     <section>
       <mt-field
-       label="兑换账号"
-        placeholder="请输入账号"
+       label="卡号"
+        placeholder="请输入卡号"
         type = "text"
         v-model = "account"
         ></mt-field>
       <mt-field
-       label="兑换密码"
-       placeholder="请输入兑换密码"
+       label="密码"
+       placeholder="请输入密码"
        type="password"
        v-model="password"
         ></mt-field>
-      <p class="tip">提示 : 一经激活后，兑换商品将于账号绑定</p>
+      <p class="tip">提示 : 一经兑换后，兑换商品将于账号绑定！</p>
     </section>
     <mt-button
      plain
@@ -38,6 +38,26 @@ export default {
     return {
       account:'',
       password:''
+    }
+  },
+  mounted() {
+    if (!this.$store.state.detail.userInfo.hasOwnProperty('id')) {
+      let code = this.$route.query.code
+      if (code){
+        this.$api({
+          method: 'get',
+          url: '/api/user?code='+code
+        }).then((response) => {
+          this.$store.commit('SET_USER', response.data);
+          this.userInfo = response.data;
+        }).catch(function(error) {
+          console.log(error)
+        })
+      }else {
+        this.$router.replace({
+          path: '/login'
+        })
+      }
     }
   },
   methods:{

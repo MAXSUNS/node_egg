@@ -20,7 +20,6 @@
        :readonly='!toggle'
        :disableClear = '!toggle'
         ></mt-field>
-      <p class="tip">Tip : 账号密码随便输</p>
     </section>
     <mt-button
      plain

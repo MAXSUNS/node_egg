@@ -5,7 +5,7 @@
           <div class="header-icon">
               <img height="60" width="60" :src="userInfo.headimgurl">
           </div>
-        <span  >         {{userInfo.nickname}}</span>
+        <span>         {{userInfo.nickname}}</span>
       </header>
     <div class="main">
           <router-link class="my-indent" to="/order">
@@ -109,12 +109,6 @@
       }
     },
     mounted() {
-
-      // console.log(this.$route.query)
-      // console.log("------------"+JSON.stringify(this.$store.state))
-      const uInfo={"openid":"oFvgIwt6lExTY72Lj8Zz0oa59Ta4","nickname":"孙岱Max","sex":1,"language":"zh_CN","city":"浦东新区","province":"上海","country":"中国","headimgurl":"https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLibmC4vmibqINOB4gQdz05NaZ0bN3SLRCicOpVbGu7bvSCdkHd9RbUEDlBfJfbPqgATIt3RXQdCLL3A/132","privilege":[],"id":2}
-      this.$store.commit('SET_USER', uInfo);
-
       if (this.$store.state.detail.userInfo.hasOwnProperty('id')){
         this.userInfo = this.$store.state.detail.userInfo
       }else {
