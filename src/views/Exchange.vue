@@ -16,7 +16,7 @@
        type="password"
        v-model="password"
         ></mt-field>
-      <p class="tip">提示 : 一经兑换后，兑换商品将与账号绑定！</p>
+      <p class="tip">提示 : 兑换成功后，兑换商品将与账号绑定！</p>
     </section>
     <mt-button
      plain
