@@ -50,12 +50,7 @@ export default {
     }
   },
   mounted() {
-
-    // console.log(this.$route.query)
-    // console.log("------------"+JSON.stringify(this.$store.state))
-    console.log("111111----"+JSON.stringify(this.$store.state.detail.selectOrder))
     this.orders=this.$store.state.detail.selectOrder.orders
-
   }
 
 }

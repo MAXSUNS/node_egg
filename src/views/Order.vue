@@ -42,14 +42,8 @@ export default {
     }
   },
   mounted() {
-
-    // console.log(this.$route.query)
-    // console.log("------------"+JSON.stringify(this.$store.state))
-
-
     if (this.$store.state.detail.userInfo.hasOwnProperty('id')){
       this.userId = this.$store.state.detail.userInfo.id
-      console.log("-----------====="+this.userId)
       this.$api({
         method: 'get',
         url: '/api/order?userId='+this.userId
