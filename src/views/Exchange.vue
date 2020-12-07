@@ -16,7 +16,7 @@
        type="password"
        v-model="password"
         ></mt-field>
-      <p class="tip">提示 : 兑换成功后，兑换商品将与账号绑定！</p>
+      <p class="tip"  href="tel:10086#mp.weixin.qq.com">提示 : 若果您在使用过程中有任何疑问，请致电客服热线：*********！</p>
     </section>
     <mt-button
      plain
