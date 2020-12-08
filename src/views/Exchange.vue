@@ -22,7 +22,7 @@
      plain
      size="large"
      @click="exchange"
-     >兑换</mt-button>
+     >立即兑换</mt-button>
 
   </div>
 </template>
